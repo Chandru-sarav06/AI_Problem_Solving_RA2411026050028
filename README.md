@@ -1,6 +1,6 @@
 # AI Problem Solving Assignment
  
-**Team Members: 
+Team Members: 
 		1.CHANDRU M S (RA2411026050028)
 		2.Jagan Karthick A (RA2411026050028)
 
