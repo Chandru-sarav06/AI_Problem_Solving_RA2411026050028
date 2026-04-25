@@ -78,7 +78,7 @@ Where:
 g(n) = actual cost from start
 h(n) = estimated cost to goal (heuristic)
 
-How to Run
+Execution Steps
 cd Problem2_Navigation
 pip install flask
 python navigation.py
