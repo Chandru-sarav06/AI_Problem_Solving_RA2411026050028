@@ -8,8 +8,7 @@ Team Members:
 ## Problems Implemented
 
 ### Problem 1 — Interactive Game AI (Tic-Tac-Toe)
-### Problem 2 — Disaster Evacuation Planner
-
+### Problem 2 — GPS-Based City Route Finder (A* Algorithm)
 ---
 
 ## Problem 1: Interactive Game AI — Tic-Tac-Toe
@@ -53,58 +52,44 @@ vs Minimax:
 
 ---
 
-## Problem 2: Disaster Evacuation Planner
+## Problem 2: GPS-Based City Route Finder (A* Algorithm)
+A navigation system that finds the shortest/fastest path between two locations in a city, similar to Google Maps.
+The city is modeled as a graph or grid, where:
+	Nodes represent locations
+	Edges represent roads with travel costs
+	Some paths may be blocked
 
-### Description
-An interactive puzzle where 3 civilians and 3 criminals must cross a river. The constraint is that criminals must never outnumber civilians on either side. The system validates every move, provides hints using BFS, and can auto-solve the puzzle.
+Users can input the map, start point, and destination via a GUI.
 
-### Algorithms Used
-
-| Concept | Implementation |
-|---------|---------------|
-| **State Space Formulation** | State = (left_civ, left_crim, right_civ, right_crim, boat_side) |
-| **BFS Search** | Finds the optimal sequence of moves from any state to the goal |
-| **Constraint Validation** | Each state is checked: `criminals ≤ civilians` on both shores (when civilians > 0) |
-
-### Execution Steps
-```bash
-cd Problem2_Evacuation
-pip install flask
-python evacuation.py
-# Open http://localhost:5001
-```
-
-### Sample Output
-```
-Initial State: Left(3C, 3K) | Right(0C, 0K) | Boat: Left
-
-Step 1: Move 1C + 1K → Right  [Valid]
-Step 2: Move 1C → Left        [Valid]
-Step 3: Move 2K → Right       [Valid]
-...
-Step 11: Final — Left(0C, 0K) | Right(3C, 3K) ✓ SOLVED
-
-BFS solution length: 11 steps
-States explored: 16
-```
-
-### State Space Analysis
-- Total valid states: 16
-- Solution depth: 11 moves
-- BFS guarantees shortest path
-
----
-
-## Folder Structure
-```
-AI_ProblemSolving/
-├── Problem1_TicTacToe/
-│   └── tictactoe.py         # Flask app — Minimax + Alpha-Beta
-├── Problem2_Evacuation/
-│   └── evacuation.py        # Flask app — BFS State Space Search
-└── README.md
-```
-
-## Requirements
-- Python 3.8+
+Algorithm Used
+A* Search Algorithm
+Combines actual cost and heuristic estimate
+Efficient and optimal pathfinding- Python 3.8+
 - Flask (`pip install flask`)
+
+Core Concept
+
+A* evaluates nodes using:
+
+f(n) = g(n) + h(n)
+
+Where:
+
+g(n) = actual cost from start
+h(n) = estimated cost to goal (heuristic)
+
+How to Run
+cd Problem2_Navigation
+pip install flask
+python navigation.py
+
+Open browser: http://localhost:5001
+
+Sample Output
+Start: A
+Goal: G
+
+Optimal Path: A → B → D → G
+Total Cost: 12
+
+Nodes Explored: 8
