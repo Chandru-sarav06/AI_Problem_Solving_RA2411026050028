@@ -1,0 +1,222 @@
+:root {
+    --bg-color: #0f172a;
+    --board-bg: #1e293b;
+    --cell-bg: #334155;
+    --cell-hover: #475569;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --player-x: #ef4444; /* Red for X */
+    --player-o: #10b981; /* Green for O */
+    --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+select {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--board-bg);
+    color: var(--text-main);
+    border: 1px solid var(--cell-bg);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+select:focus {
+    border-color: var(--accent);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.75rem;
+    background-color: var(--board-bg);
+    padding: 0.75rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.cell {
+    background-color: var(--cell-bg);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    user-select: none;
+}
+
+.cell:hover {
+    background-color: var(--cell-hover);
+}
+
+.cell:active {
+    transform: scale(0.95);
+}
+
+.cell.x {
+    color: var(--player-x);
+}
+
+.cell.o {
+    color: var(--player-o);
+}
+
+.actions {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--accent);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.stats-panel {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.stat-card {
+    flex: 1;
+    background-color: var(--board-bg);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--cell-bg);
+}
+
+.stat-title {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    backdrop-filter: blur(4px);
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: var(--board-bg);
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+.modal.hidden .modal-content {
+    transform: scale(0.9);
+}
+
+.modal-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}

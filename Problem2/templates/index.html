@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A* Route Navigator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+            </div>
+            <h1>CityNav <span class="badge">A* Search</span></h1>
+            <p class="subtitle">Intelligent Route Planning System</p>
+        </header>
+
+        <div class="layout">
+            <div class="input-panel card">
+                <h2>Network Data</h2>
+                
+                <div class="form-group">
+                    <label for="graph-input">City Map (Graph Weights)</label>
+                    <textarea id="graph-input" rows="6" placeholder="A → B (1), C (4)
+B → D (2), E (5)
+C → D (1)
+D → F (3)
+E → F (1)"></textarea>
+                    <div class="help-text">Format: Node → Target (Weight), Target2 (Weight)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="heuristic-input">Heuristics (Est. Distance)</label>
+                    <textarea id="heuristic-input" rows="4" placeholder="A: 7, B: 6, C: 4, D: 2, E: 1, F: 0"></textarea>
+                    <div class="help-text">Format: Node: Value, Node2: Value</div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group half">
+                        <label for="start-node">Start Location</label>
+                        <input type="text" id="start-node" placeholder="A" value="A">
+                    </div>
+                    <div class="form-group half">
+                        <label for="goal-node">Destination</label>
+                        <input type="text" id="goal-node" placeholder="F" value="F">
+                    </div>
+                </div>
+                
+                <button id="calculate-btn" class="btn primary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    Calculate Optimal Route
+                </button>
+            </div>
+
+            <div class="result-panel card">
+                <h2>Search Results</h2>
+                
+                <div id="results-container" class="empty-state">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <p>Enter data and calculate to see the route.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

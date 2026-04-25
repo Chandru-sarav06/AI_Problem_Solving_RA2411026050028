@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Tic-Tac-Toe</h1>
+            <p class="subtitle">Man vs Machine</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <label for="algorithm">AI Algorithm:</label>
+                <div class="custom-select">
+                    <select id="algorithm">
+                        <option value="alphabeta">Alpha-Beta Pruning (Faster)</option>
+                        <option value="minimax">Minimax (Slower)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="game-board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <div class="actions">
+                <button id="reset-btn" class="btn">Restart Game</button>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-card">
+                    <div class="stat-title">Execution Time</div>
+                    <div class="stat-value" id="exec-time">0.00 ms</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Nodes Explored</div>
+                    <div class="stat-value" id="nodes-count">0</div>
+                </div>
+            </div>
+        </main>
+        
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="modal-msg">You Win!</h2>
+                <button id="modal-close" class="btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
